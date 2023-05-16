@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Flex } from "@chakra-ui/react";
+import "./App.css";
+import NotificationTile from "./components/NotificationTile";
+import { notificationData } from "./staticData/notificationData";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Flex
+      bg={"#1D3569"}
+      height={"20rem"}
+      overflow={"scroll"}
+      p={"0.5rem"}
+      direction={"column"}
+      gap={"0.5rem"}
+      width={"33rem"}
+    >
+      {notificationData.map((notification, index) => (
+        <NotificationTile
+          key={index}
+          date={notification.date}
+          title={notification.title}
+          description={notification.description}
+        />
+      ))}
+    </Flex>
   );
 }
 
